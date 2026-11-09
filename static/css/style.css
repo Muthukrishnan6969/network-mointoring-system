@@ -1,0 +1,308 @@
+:root {
+    --bg-dark: #020606;
+    --neon-green: #00f38d;
+    --neon-blue: #00d2ff;
+    --neon-red: #ff3e3e;
+    --neon-pink: #ff00ff;
+    --glass: rgba(10, 25, 25, 0.7);
+    --border-glow: rgba(0, 243, 141, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.cyber-hud {
+    background-color: var(--bg-dark);
+    color: var(--neon-blue);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    margin: 0;
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Navigation */
+.side-nav {
+    width: 250px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-right: 2px solid var(--neon-blue);
+    z-index: 10;
+}
+
+.nav-brand {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--neon-pink);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.nav-links li {
+    margin-bottom: 15px;
+}
+
+.nav-links a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 12px;
+    display: block;
+    transition: 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(0, 210, 255, 0.1);
+    border-left: 3px solid var(--neon-blue);
+    color: #fff;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.nav-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 210, 255, 0.1);
+}
+
+.content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.background-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    animation: pulseGrid 10s infinite alternate;
+}
+
+@keyframes pulseGrid {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 0.6;
+    }
+}
+
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.glass-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--neon-blue);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.glitch {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Threat Meter */
+.threat-meter {
+    text-align: right;
+}
+
+.gauge-container {
+    width: 250px;
+    height: 10px;
+    background: #111;
+    border: 1px solid #333;
+    margin: 5px 0;
+}
+
+.gauge-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-red));
+    transition: width 1s ease-in-out;
+}
+
+/* Layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr 350px;
+    gap: 20px;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--neon-blue);
+    padding-bottom: 5px;
+}
+
+.panel h2 {
+    font-size: 1.1em;
+    margin: 0;
+    color: var(--neon-green);
+    text-transform: uppercase;
+}
+
+/* Table styling */
+.table-wrapper {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+
+th {
+    text-align: left;
+    color: var(--neon-blue);
+    padding: 8px;
+    border-bottom: 2px solid #222;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #111;
+    color: #fff;
+}
+
+/* Traffic Stream */
+.stream-container {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.surveillance-controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--neon-blue);
+    border-bottom: 1px solid var(--neon-blue);
+}
+
+.cyber-select {
+    background: var(--bg-dark);
+    color: #fff;
+    border: 1px solid var(--neon-blue);
+    padding: 8px 15px;
+    font-family: inherit;
+    font-size: 0.9em;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cyber-select:hover {
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.traffic-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid var(--neon-green);
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Footer */
+.system-footer {
+    margin-top: 20px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.typing-log {
+    height: 60px;
+    overflow-y: auto;
+    font-family: monospace;
+    color: var(--neon-green);
+    font-size: 0.9em;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.scan-glow-btn {
+    background: transparent;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    cursor: pointer;
+    padding: 5px 15px;
+    font-family: inherit;
+    transition: 0.3s;
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+.scan-glow-btn:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-green);
+}
+
+#network-graph {
+    flex-grow: 1;
+}
+
+.warn {
+    color: var(--neon-red);
+}

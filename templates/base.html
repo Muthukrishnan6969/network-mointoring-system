@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.H.A.D.O.W. - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="cyber-hud">
+    <div class="background-grid"></div>
+
+    <nav class="side-nav glass">
+        <div class="nav-brand">S.H.A.D.O.W.</div>
+        <ul class="nav-links">
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">DASHBOARD</a></li>
+            <li><a href="/topology" class="{% if request.path == '/topology' %}active{% endif %}">TOPOLOGY</a></li>
+            <li><a href="/devices" class="{% if request.path == '/devices' %}active{% endif %}">DEVICES</a></li>
+            <li><a href="/surveillance"
+                    class="{% if request.path == '/surveillance' %}active{% endif %}">SURVEILLANCE</a></li>
+        </ul>
+        <div class="nav-footer">
+            <button id="scan-btn" class="scan-glow-btn">PULSE SCAN</button>
+        </div>
+    </nav>
+
+    <main class="content-area">
+        <header class="glass-header">
+            <div class="header-info">
+                <h1 class="glitch" data-text="{{ self.header_title() }}">{% block header_title %}{% endblock %}</h1>
+            </div>
+            <div class="threat-meter">
+                <span>THREAT LEVEL:</span>
+                <div class="gauge-container">
+                    <div id="threat-gauge" class="gauge-bar" style="width: 20%;"></div>
+                </div>
+                <span id="threat-status">STABLE</span>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer class="system-footer glass">
+            <div id="system-log" class="typing-log"></div>
+            <div class="stats-minimal">
+                <span>NODES: <b id="stat-total">0</b></span>
+                <span>ALERTS: <b id="stat-new" class="warn">0</b></span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

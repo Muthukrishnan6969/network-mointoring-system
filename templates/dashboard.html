@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block header_title %}SYSTEM OVERVIEW{% endblock %}
+
+{% block content %}
+<div class="dashboard-stats grid-2">
+    <div class="panel glass">
+        <div class="panel-header">
+            <h2>SYSTEM STATUS</h2>
+        </div>
+        <div class="status-content">
+            <p>NETWORK SCANNER: <span class="active-text">ACTIVE</span></p>
+            <p>DNS INTERCEPTOR: <span class="active-text" id="sniffer-status">LISTENING</span></p>
+            <p>DATABASE: <span class="active-text">CONNECTED</span></p>
+        </div>
+    </div>
+    <div class="panel glass">
+        <div class="panel-header">
+            <h2>QUICK STATS</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-box"><span>ONLINE NOW</span> <b id="stat-total-2">0</b></div>
+            <div class="stat-box"><span>THREATS</span> <b id="stat-threats" class="warn">0</b></div>
+            <div class="stat-box"><span>INVENTORY</span> <b id="stat-history">0</b></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

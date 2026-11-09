@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.H.A.D.O.W. - Advanced Network Intelligence</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+
+<body class="cyber-hud">
+    <div class="background-grid"></div>
+    <div class="container">
+        <header class="glass-header">
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="S.H.A.D.O.W. CORE">S.H.A.D.O.W. CORE</h1>
+            </div>
+            <div class="threat-meter">
+                <span>SYSTEM THREAT LEVEL:</span>
+                <div class="gauge-container">
+                    <div id="threat-gauge" class="gauge-bar" style="width: 20%;"></div>
+                </div>
+                <span id="threat-status">STABLE</span>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Left Panel: Device Intelligence -->
+            <div class="panel glass">
+                <div class="panel-header">
+                    <h2><span class="icon">🔍</span> DETECTED ENTITIES</h2>
+                    <button id="scan-btn" class="scan-glow-btn">INITIATE PULSE</button>
+                </div>
+                <div class="table-wrapper">
+                    <table id="devices-table">
+                        <thead>
+                            <tr>
+                                <th>IP ADDRESS</th>
+                                <th>OS / VENDOR</th>
+                                <th>THREAT</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Center: Topology -->
+            <div class="panel glass center-panel">
+                <div class="panel-header">
+                    <h2><span class="icon">🕸️</span> TOPOLOGY MATRIX</h2>
+                </div>
+                <div id="network-graph"></div>
+            </div>
+
+            <!-- Right Panel: Live Surveillance -->
+            <div class="panel glass">
+                <div class="panel-header">
+                    <h2><span class="icon">📡</span> LIVE TRAFFIC STREAM</h2>
+                </div>
+                <div id="traffic-stream" class="stream-container">
+                    <!-- Traffic cards injected here -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="system-footer glass">
+            <div class="log-section">
+                <h3>SYSTEM LOG</h3>
+                <div id="system-log" class="typing-log"></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box"><span>TOTAL NODES:</span> <b id="stat-total">0</b></div>
+                <div class="stat-box"><span>NEW DEVICES:</span> <b id="stat-new" class="warn">0</b></div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
